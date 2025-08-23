@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home | Express + Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-dvh bg-slate-50 text-slate-900">
+  <!-- Navbar -->
+  <header class="border-b bg-white">
+    <nav class="mx-auto max-w-5xl px-4 h-14 flex items-center gap-6">
+      <a href="/" class="font-semibold">MyShop</a>
+      <a href="/" class="text-sm hover:text-blue-600">Home</a>
+      <a href="/about.html" class="text-sm hover:text-blue-600">About</a>
+      <a href="/products.html" class="text-sm hover:text-blue-600">Products</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main class="mx-auto max-w-5xl px-4 py-14">
+    <section class="rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 p-8 text-white">
+      <h1 class="text-3xl font-bold">Welcome to MyShop</h1>
+      <p class="mt-2 opacity-90">Tiny demo site served by Express, styled with Tailwind.</p>
+      <a href="/products.html" class="mt-6 inline-block rounded-lg bg-white/15 px-4 py-2 text-sm hover:bg-white/25">
+        Browse products →
+      </a>
+    </section>
+
+    <!-- Features -->
+    <section class="mt-10 grid gap-6 sm:grid-cols-3">
+      <div class="rounded-xl border bg-white p-5">
+        <h3 class="font-semibold">Fast</h3>
+        <p class="mt-1 text-sm text-slate-600">Minimal HTML, quick to load.</p>
+      </div>
+      <div class="rounded-xl border bg-white p-5">
+        <h3 class="font-semibold">Simple</h3>
+        <p class="mt-1 text-sm text-slate-600">Just Tailwind via CDN.</p>
+      </div>
+      <div class="rounded-xl border bg-white p-5">
+        <h3 class="font-semibold">Express Ready</h3>
+        <p class="mt-1 text-sm text-slate-600">Drop into <code>public/</code> and go.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t bg-white">
+    <div class="mx-auto max-w-5xl px-4 h-14 flex items-center text-sm text-slate-600">
+      © <span id="y" class="mx-1"></span> MyShop
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products | Express + Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-dvh bg-slate-50 text-slate-900">
+  <header class="border-b bg-white">
+    <nav class="mx-auto max-w-5xl px-4 h-14 flex items-center gap-6">
+      <a href="/" class="font-semibold">MyShop</a>
+      <a href="/" class="text-sm hover:text-blue-600">Home</a>
+      <a href="/about.html" class="text-sm hover:text-blue-600">About</a>
+      <a href="/products.html" class="text-sm text-blue-600 font-medium">Products</a>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-4 py-12">
+    <h1 class="text-2xl font-bold">Products</h1>
+    <p class="mt-2 text-slate-700">Just some placeholder cards.</p>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Card -->
+      <article class="group rounded-xl border bg-white p-4 transition hover:shadow-md">
+        <div class="aspect-video rounded-lg bg-slate-100"></div>
+        <h3 class="mt-3 font-semibold">Item One</h3>
+        <p class="text-sm text-slate-600 mt-1">Short description.</p>
+        <div class="mt-3 flex items-center justify-between">
+          <span class="font-semibold">$19.99</span>
+          <button class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50">Add</button>
+        </div>
+      </article>
+
+      <article class="group rounded-xl border bg-white p-4 transition hover:shadow-md">
+        <div class="aspect-video rounded-lg bg-slate-100"></div>
+        <h3 class="mt-3 font-semibold">Item Two</h3>
+        <p class="text-sm text-slate-600 mt-1">Short description.</p>
+        <div class="mt-3 flex items-center justify-between">
+          <span class="font-semibold">$29.99</span>
+          <button class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50">Add</button>
+        </div>
+      </article>
+
+      <article class="group rounded-xl border bg-white p-4 transition hover:shadow-md">
+        <div class="aspect-video rounded-lg bg-slate-100"></div>
+        <h3 class="mt-3 font-semibold">Item Three</h3>
+        <p class="text-sm text-slate-600 mt-1">Short description.</p>

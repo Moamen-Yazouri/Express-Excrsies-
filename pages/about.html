@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Express + Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-dvh bg-slate-50 text-slate-900">
+  <header class="border-b bg-white">
+    <nav class="mx-auto max-w-5xl px-4 h-14 flex items-center gap-6">
+      <a href="/" class="font-semibold">MyShop</a>
+      <a href="/" class="text-sm hover:text-blue-600">Home</a>
+      <a href="/about.html" class="text-sm text-blue-600 font-medium">About</a>
+      <a href="/products.html" class="text-sm hover:text-blue-600">Products</a>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="text-2xl font-bold">About</h1>
+    <p class="mt-3 text-slate-700">
+      This tiny site is here to test static file serving in Express and basic Tailwind styling.
+      Use it as a starting point and customize as you like.
+    </p>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      <div class="rounded-xl border bg-white p-5">
+        <h2 class="font-semibold">Tech Stack</h2>
+        <ul class="mt-2 list-disc pl-5 text-sm text-slate-700">
+          <li>Node.js + Express</li>
+          <li>Tailwind (CDN)</li>
+          <li>Plain HTML</li>
+        </ul>
+      </div>
+      <div class="rounded-xl border bg-white p-5">
+        <h2 class="font-semibold">Why Tailwind?</h2>
+        <p class="mt-2 text-sm text-slate-700">
+          Utility-first classes make quick prototypes fast and consistent—perfect for testing.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t bg-white">
+    <div class="mx-auto max-w-5xl px-4 h-14 flex items-center text-sm text-slate-600">
+      <a href="/" class="hover:text-blue-600">← Back Home</a>
+    </div>
+  </footer>
+</body>
+</html>
