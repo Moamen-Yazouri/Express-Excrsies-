@@ -5,7 +5,7 @@ const uploadsPath = path.join(__dirname, "../uploads");
 const fileUpload = multer({
     storage: multer.diskStorage({
         destination: (_req, _file, cb) => {
-        cb(null, uploadsPath);
+            cb(null, uploadsPath);
         },
         filename: (req, file, cb) => {
             const ext = path.extname(file.originalname);

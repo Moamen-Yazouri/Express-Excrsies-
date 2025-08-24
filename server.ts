@@ -2,6 +2,7 @@ import express, {Request, Response, NextFunction, ErrorRequestHandler} from "exp
 import fs from "node:fs";
 import path from "path";
 import { userRouter } from "./Module/user/user.route";
+import { errorHandler } from "./Error/util/errorHandler";
 
 const app = express();
 const port = 4000;
@@ -12,7 +13,8 @@ app.use(express.static(path.join(__dirname, "/pages"), {
     }
 }))
 
-app.use("/users", userRouter)
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/auth")
 
 app.get("/", (req, res) => {
     const home = path.join(__dirname, "/pages", "/index.html")
@@ -49,12 +51,8 @@ app.use((req: Request, res: Response) => {
 
 })
 
-app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) => {
-    console.log(err.name);
-    res.status(500).json({
-        success: "false",
-        cause: "Internal Server Error"
-    })
+app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
+    errorHandler(err, res);
 })
 app.listen(port, () => {
     console.log("Hello express!")
