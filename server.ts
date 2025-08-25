@@ -3,10 +3,18 @@ import fs from "node:fs";
 import path from "path";
 import { userRouter } from "./Module/user/user.route";
 import { errorHandler } from "./Error/util/errorHandler";
+import { authRouter } from "./Module/auth/auth.routes";
+import session from "express-session";
 
 const app = express();
 const port = 4000;
 app.use(express.json());
+app.use(session({
+    secret: "My secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure: false}
+}))
 app.use(express.static(path.join(__dirname, "/pages"), {
     setHeaders: (res: Response) => {
         res.setHeader("cache-control", "public max-age=3600");
@@ -14,7 +22,7 @@ app.use(express.static(path.join(__dirname, "/pages"), {
 }))
 
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/auth")
+app.use("/api/v1/auth", authRouter)
 
 app.get("/", (req, res) => {
     const home = path.join(__dirname, "/pages", "/index.html")

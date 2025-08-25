@@ -11,8 +11,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/express-session": "^1.18.2",
     "argon2": "^0.44.0",
     "express": "^5.1.0",
+    "express-session": "^1.18.2",
     "multer": "^2.0.2",
     "zod": "^4.1.1"
   },
