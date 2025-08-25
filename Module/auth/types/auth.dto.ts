@@ -6,7 +6,10 @@ export interface ILoginDTO {
 }
 
 export interface ILoginResponseDTO extends Omit<IUser, "password"> {};
+export interface ISignUpResponseDTO extends Omit<IUser, "password"> {};
 
 export interface ISignUpDTO extends Pick<IUser, "password" | "name" | "email" | "avatar"> {};
+
+
 
 

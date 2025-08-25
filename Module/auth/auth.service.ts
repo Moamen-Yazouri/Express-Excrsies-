@@ -1,20 +1,28 @@
 import { HttpStatus } from "../../@types";
 import { CustomError } from "../../Error/customError";
-import { createArgon2Hash } from "../../utils/hashAndVerify";
+import { createArgon2Hash, verifyArgon2Hash } from "../../utils/hashAndVerify";
 import { removeFields } from "../../utils/object.utils";
+import { IUser } from "../user/user.entity";
 import userService from "../user/user.service";
 import { ILoginDTO, ISignUpDTO } from "./types/auth.dto";
-import { signUpSchema } from "./utils/auth.schema";
 
 class AuthService {
-    login(data: ILoginDTO) {
-        console.log(data);
+    async login(data: ILoginDTO): Promise<IUser | null> {
+        const user = userService.findByEmail(data.email);
+        if(!user) {
+            return null
+        }
+        const isValid = await verifyArgon2Hash(data.password, user.password);
+        if(!isValid) {
+            return null
+        }
+        return user;
     }
 
     async signUp(data: ISignUpDTO) {
+        console.log(data, "from service");
         try {
             const hashedPassword = await createArgon2Hash(data.password);
-            signUpSchema.parse(data);
             const signed = userService.createUser(
                 data.name,
                 data.email,
