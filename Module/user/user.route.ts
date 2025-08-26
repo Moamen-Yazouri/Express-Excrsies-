@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import { uploadSingle } from '../../config/multer.config';
 import userController from './user.controller';
+import { authMiddleware } from '../../middlewares/auth.middlware';
 
 const router = Router();
 
 
-
+router.use(authMiddleware);
 // GET /api/users - Get all users
 router.get('/', userController.getUsers);
 

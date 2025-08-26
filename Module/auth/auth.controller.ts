@@ -1,31 +1,37 @@
+import {Request, Response} from "express";
 import { HttpStatus, StringObj } from "../../@types";
 import { zodValidation } from "../../validation/zod.validation";
 import authService from "./auth.service";
 import { ILoginDTO, ILoginResponseDTO, ISignUpDTO, ISignUpResponseDTO } from "./types/auth.dto";
-import { Request, Response } from "express";
 import { loginSchema, signUpSchema } from "./utils/auth.schema";
 import { deleteUploadedAsset } from "../../utils/deleteAfterFailure";
 import { removeFields } from "../../utils/object.utils";
 
 class AuthController {
-    async login(req: Request<StringObj, StringObj,  ILoginDTO, StringObj>, res: Response<ILoginResponseDTO | string>) {
+    public async login(req: Request<StringObj, StringObj,  ILoginDTO>, res: Response<ILoginResponseDTO | string>) {
         const data = req.body;
+        
         const validData = zodValidation(loginSchema, data, 'auth');
+        
         const user = await authService.login(validData);
+        
         if(!user) {
-            res
+             res
                 .status(HttpStatus.BadRequest)
-                .send("Invalid Credintials!")
-                return;
+                .send("Invalid Credintials!");
+            return;
+                
         }
-        const userDto = removeFields(user, ["password"])
+        const userDto = removeFields(user, ["password"]);
+
+        req.session.userId = user.id;
+
         res
-            .status(HttpStatus.OK)
             .json(userDto)
 
     }
 
-    async signUp(req: Request<StringObj, StringObj,  ISignUpDTO, StringObj>, res: Response<ISignUpResponseDTO | string>) {
+    async signUp(req: Request<StringObj, StringObj,  ISignUpDTO>, res: Response<ISignUpResponseDTO | string>) {
         try {
 
             const data = req.body;

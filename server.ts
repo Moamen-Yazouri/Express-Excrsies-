@@ -13,7 +13,7 @@ app.use(session({
     secret: "My secret",
     resave: false,
     saveUninitialized: true,
-    cookie: {secure: false}
+    cookie: {secure: false, maxAge: 24 * 60 * 60}
 }))
 app.use(express.static(path.join(__dirname, "/pages"), {
     setHeaders: (res: Response) => {

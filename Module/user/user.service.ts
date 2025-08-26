@@ -3,36 +3,39 @@ import userRepo from "./user.repo";
 
 class UserService {
     getUsers(): IUser[] {
-    return userRepo.findAll();
-  }
+      return userRepo.findAll();
+    }
 
-  getUser(id: string): IUser | undefined {
-    return userRepo.findById(id);
-  }
+    getUser(id: string): IUser | undefined {
+      return userRepo.findById(id);
+    }
 
-  public findByEmail(email: string) {
-    return userRepo.findByEmail(email);
-  }
+    public findByEmail(email: string) {
+      return userRepo.findByEmail(email);
+    }
+    findById(id: string) {
+      return !!userRepo.findById(id);
+    }
+    public createUser(
+      name: string,
+      email: string,
+      password: string,
+      avatar?: string
+    ): IUser {
+      return userRepo.create({
+          name: name,
+          email: email, 
+          password: password, 
+          avatar: avatar
+      });
+    }
 
-  public createUser(
-    name: string,
-    email: string,
-    password: string,
-    avatar?: string
-  ): IUser {
-    return userRepo.create({
-        name: name,
-        email: email, 
-        password: password, 
-        avatar: avatar
-    });
-  }
+    updateUser(id: string,data: Partial<IUser>) {
+      return userRepo.update(id, data);
+    }
+    deleteUser(id: string) {
+      return userRepo.delete(id);
+    }
 
-  updateUser(id: string,data: Partial<IUser>) {
-    return userRepo.update(id, data);
-  }
-  deleteUser(id: string) {
-    return userRepo.delete(id);
-  }
 }
 export default new UserService();

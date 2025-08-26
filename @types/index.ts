@@ -29,3 +29,9 @@ export enum HttpStatus {
   ServiceUnavailable = 503,
   GatewayTimeout = 504,
 }
+
+declare module 'express-session' {
+  interface SessionData {
+    userId: string,
+  }
+}

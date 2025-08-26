@@ -14,3 +14,7 @@ export const loginSchema = userSchema.pick({
     email: true, 
     password: true,  
 }) satisfies ZodType<ILoginDTO>
+
+
+
+ 
