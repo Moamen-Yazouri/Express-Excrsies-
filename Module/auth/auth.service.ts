@@ -20,7 +20,7 @@ class AuthService {
     }
 
     async signUp(data: ISignUpDTO) {
-        console.log(data, "from service");
+       
         try {
             const hashedPassword = await createArgon2Hash(data.password);
             const signed = userService.createUser(
