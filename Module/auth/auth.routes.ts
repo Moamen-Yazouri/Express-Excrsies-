@@ -4,13 +4,14 @@ import authController from "./auth.controller";
 
 const router = Router();
 
-router.post('/login', authController.login as RequestHandler) ;
+router.post('/login', authController.login as RequestHandler);
+
+router.post("/login-jwt", authController.loginWithJwt as RequestHandler);
 
 router.post(
   '/sign-up',
   uploadSingle('avatar'),
   authController.signUp,
 );
-
 
 export const authRouter = router;

@@ -30,8 +30,27 @@ export enum HttpStatus {
   GatewayTimeout = 504,
 }
 
+
+export interface IJwtPayload {
+  sub: string,
+  name: string,
+  email: string,
+}
+
 declare module 'express-session' {
   interface SessionData {
     userId: string,
+  }
+}
+interface IEnvs {
+    PORT: number;
+    JWT_SECRET: string,
+    SESSION_SECRET: string,
+    NODE_ENV: "production" | "development",
+}
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv extends IEnvs {}
   }
 }
